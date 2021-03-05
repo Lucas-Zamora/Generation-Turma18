@@ -55,18 +55,32 @@ public class Conta {
 
     //METODOS
     public void credito(double valor) {
+        for (int i = 0; i <15; i++) {
+            System.out.println();
+        }
+        System.out.printf("Depósito realizado no valor de: R$ %.2f ", valor);
         this.saldo = this.saldo + valor;
+        System.out.printf("Saldo Disponível: R$ %.2f \n", getSaldo());
+        System.out.println();
+
     }
 
     public void debito (double valor) { 
+        for (int i = 0; i <15; i++) {
+        	
+        System.out.println();
+        }
         if (this.saldo >= valor) {
         this.saldo = this.saldo - valor;
         System.out.printf("Saque de R$ %.2f. Retire seu dinheiro abaixo! \n", valor);
         System.out.println();
-        System.out.printf("Saldo R$ %.2f \n", this.getSaldo());
+        System.out.printf("Saldo Disponível: R$ %.2f \n", this.getSaldo());
         }
         else if (valor > saldo) {
-            System.out.println("Saldo insuficiente. Procure um atendente ou faça um depósito na conta.");
+            for (int i = 0; i <15; i++) {
+                System.out.println();
+            }System.out.println("Você não pode realizar essa operação. Saldo insuficiente!");
+            System.out.printf("Saldo R$ %.2f \n", this.getSaldo());
         }
     }
 }

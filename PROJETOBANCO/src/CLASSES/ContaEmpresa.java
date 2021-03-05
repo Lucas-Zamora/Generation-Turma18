@@ -1,27 +1,24 @@
 package CLASSES;
 import java.util.Scanner;
 
-public class ContaEmpresa {
-	
-		/*Scanner leia = new Scanner(System.in);
-		
-		double emprestimoEmpresa = 10000;
+// lucas zamora
+public class ContaEmpresa extends Conta{
+		Scanner ler = new Scanner(System.in);
+		double emprestimoEmpresa = 10000.00;
 		int opcao = 0;
-		int operacoes= 0;
 		
-		public ContaEstudantil(int numero, String cpf, boolean ativa) {
+		public ContaEmpresa(int numero, String cpf, boolean ativa, double emprestimoEmpresa) {
 			super(numero, cpf, ativa);
-			this.setemprestimoEmpresa(5000);
-		}
+			this.emprestimoEmpresa = emprestimoEmpresa;
+		}	
 		
-		public double getLimiteEstudantil() {
-			return limiteEstudantil;
+		public double getEmprestimoEmpresa() {
+			return emprestimoEmpresa;
 		}
 
-		public void setLimiteEstudantil(double limiteEstudantil) {
-			this.limiteEstudantil = limiteEstudantil;
+		public void setEmprestimoEmpresa(double emprestimoEmpresa) {
+			this.emprestimoEmpresa = 10000.00;
 		}
-		
 
 		@Override
 		public void debito(double valor) {
@@ -29,15 +26,14 @@ public class ContaEmpresa {
 				this.saldo = this.getSaldo() - valor;
 			}
 			else if(valor > saldo) {
-				System.out.println("\t   Você não possui saldo o suficiente. Deseja solicitar um");	
-				System.out.println("          empréstimo estudantil no valor de R$5000? [1] Sim | [0] Não");
-				opcao = leia.nextInt();
+				System.out.println("Saldo em conta insuficiente.");	
+				System.out.println("Gostaria de solicitar um empréstimo empresarial (Seu limite é de R$10000.00) ?");
+				System.out.println("Caso Sim, digite [1], para Não digite [0]:");
+				opcao = ler.nextInt();
 				
 				if(opcao == 1) {
-					this.credito(getLimiteEstudantil());
+					this.credito(getEmprestimoEmpresa());
 				}
 			}
 		}
 	}
-	*/
-}
