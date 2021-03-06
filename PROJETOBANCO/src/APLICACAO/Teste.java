@@ -1,9 +1,12 @@
 package APLICACAO;
 
+
+
 import java.util.Scanner;
 
 import CLASSES.ContaEspecial;
-import CLASSES.ContaEmpresa;
+
+
 
 public class Teste {
 
@@ -12,16 +15,12 @@ public class Teste {
 		String cpf= "";
 		int numero = 0;
 		double valor;
-		final double limite = 1000.00;
+		final double limite = 1000;
 		char opcao,opcao1;
 		boolean ativa = true;
-		//Conta conta = new Conta(numero,cpf);
-		ContaEspecial contaEspecial = new ContaEspecial(numero,cpf,ativa,limite); 
-		ContaEmpresa contaEmpresa = new ContaEmpresa(numero,cpf,ativa,10000.00);
 		
-		//Conta contaPoupanca = new ContaPoupanca();
-		//Conta contaEmpresa = new ContaEmpresa();
-		//Conta contaEstudantil = new ContaEstudantil();
+		ContaEspecial contaEspecial = new ContaEspecial(numero,cpf,ativa,limite);
+		
 		
 		//TELA 1
 		System.out.println("-------------------------------------------");
@@ -43,14 +42,12 @@ public class Teste {
 			//CASO SEJA CONTA ESPECIAL	
 			for (int i = 0; i < 15; i++) {
 				System.out.println();
-					
 			}
 			do {
 				System.out.println("BANCO GEN-18 \nAQUI SEU DINHEIRO TEM VALOR!");
 				System.out.println("CONTA ESPECIAL");
 				System.out.print("Digite o numero da sua conta: ");
 				numero = leia.nextInt();
-				
 				
 				System.out.print("Insira o número do CPF:");  										
 		    	cpf = leia.next();
@@ -66,14 +63,16 @@ public class Teste {
 					else {
 					ativa = false;
 					System.out.println("Conta desativada.");
+					break;
 					}
 					
 				//TELA 2
 				System.out.println("BANCO GEN-18 \nAQUI SEU DINHEIRO TEM VALOR!");
 				System.out.println("CONTA ESPECIAL");
-				System.out.print(contaEspecial.getSaldo());
+				System.out.print("Saldo Atual: R$ " + contaEspecial.getSaldo());
 				System.out.println();
 				//CALCULO DO SALDO
+				
 				for (int i = 0; i <10; i++) {	
 					System.out.print("Digite o valor da operação: R$ ");
 					valor = leia.nextDouble();
@@ -81,15 +80,22 @@ public class Teste {
 					opcao = leia.next().toUpperCase().charAt(0);
 					if (opcao == 'D') {
 						contaEspecial.debito(valor);
+						
+							
+						
 					}
 					else if (opcao == 'C') {
 						contaEspecial.credito(valor);
-					}	
-				}
-				System.out.println(contaEspecial.getSaldo());
-				//System.out.println("Valor movimentado R$: " ValorMovimentadoMetodo);
-				System.out.println("Deseja continuar? [S/N]: ");
-				opcao1 = leia.next().toUpperCase().charAt(0);
+					}	else {
+						System.out.println("Opção inválida!");
+					}
+					
+					contaEspecial.usarLimite(valor);
+					System.out.println(i + 1+ "º Movimento. Deseja continuar? [S/N]: ");
+					opcao1 = leia.next().toUpperCase().charAt(0);
+				
+				} 	
+				 	
 			} while (opcao1 == 'N');	
 		
 		} break;
