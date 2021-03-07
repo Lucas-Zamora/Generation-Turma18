@@ -1,16 +1,14 @@
 package APLICACAO;
 
-
-
 import java.util.Scanner;
 
-import CLASSES.ContaEspecial;
-
-
+import CLASSES.ContaEmpresa;
 
 public class Teste {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
 		Scanner leia = new Scanner(System.in);
 		String cpf= "";
 		int numero = 0;
@@ -19,7 +17,8 @@ public class Teste {
 		char opcao,opcao1;
 		boolean ativa = true;
 		
-		ContaEspecial contaEspecial = new ContaEspecial(numero,cpf,ativa,limite);
+		//ContaEspecial contaEspecial = new ContaEspecial(numero,cpf,ativa,limite);
+		ContaEmpresa contaEmpresa = new ContaEmpresa(numero,cpf,ativa,10000.00);
 		
 		
 		//TELA 1
@@ -37,7 +36,7 @@ public class Teste {
 		int tipoConta = leia.nextInt();
 		switch (tipoConta) {
 		
-		case 3: {
+		case 4: {
 			
 			//CASO SEJA CONTA ESPECIAL	
 			for (int i = 0; i < 15; i++) {
@@ -45,7 +44,7 @@ public class Teste {
 			}
 			do {
 				System.out.println("BANCO GEN-18 \nAQUI SEU DINHEIRO TEM VALOR!");
-				System.out.println("CONTA ESPECIAL");
+				System.out.println("CONTA EMPRESA");
 				System.out.print("Digite o numero da sua conta: ");
 				numero = leia.nextInt();
 				
@@ -68,29 +67,32 @@ public class Teste {
 					
 				//TELA 2
 				System.out.println("BANCO GEN-18 \nAQUI SEU DINHEIRO TEM VALOR!");
-				System.out.println("CONTA ESPECIAL");
-				System.out.print("Saldo Atual: R$ " + contaEspecial.getSaldo());
+				System.out.println("CONTA EMPRESA");
+				System.out.print("Saldo Atual: R$ " + contaEmpresa.getSaldo());
 				System.out.println();
 				//CALCULO DO SALDO
 				
 				for (int i = 0; i <10; i++) {	
 					System.out.print("Digite o valor da operação: R$ ");
 					valor = leia.nextDouble();
+					
 					System.out.print("Débito ou crédito? [D/C]: ");
 					opcao = leia.next().toUpperCase().charAt(0);
+					
 					if (opcao == 'D') {
-						contaEspecial.debito(valor);
-						
-							
+						contaEmpresa.debito(valor);	
 						
 					}
 					else if (opcao == 'C') {
-						contaEspecial.credito(valor);
-					}	else {
+						contaEmpresa.credito(valor);
+					
+					}
+					else {
 						System.out.println("Opção inválida!");
+						
 					}
 					
-					contaEspecial.usarLimite(valor);
+					contaEmpresa.getEmprestimoEmpresa();		
 					System.out.println(i + 1+ "º Movimento. Deseja continuar? [S/N]: ");
 					opcao1 = leia.next().toUpperCase().charAt(0);
 				
@@ -107,4 +109,5 @@ public class Teste {
 		} 
 	leia.close();
 	}
+
 }
